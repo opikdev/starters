@@ -5,5 +5,4 @@
 - **Decision**: Host the parent repo and all starters under `opikdev`.
 - **Consequences**:
   - Work can start without creating an organization.
-  - `gitleaks-action` needs no license key on a personal account. Moving to an organization adds that requirement.
   - Moving later means updating every `repo` URL in `catalog.yaml`.

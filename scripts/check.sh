@@ -18,7 +18,7 @@ base/.github/scripts/check-repo-standards.sh
 
 for file in .editorconfig .gitattributes .github/CODEOWNERS .github/ISSUE_TEMPLATE/bug_report.yml \
   .github/ISSUE_TEMPLATE/config.yml .github/ISSUE_TEMPLATE/feature_request.yml \
-  .github/pull_request_template.md CODE_OF_CONDUCT.md CONTRIBUTING.md LICENSE SECURITY.md; do
+  .github/pull_request_template.md .github/workflows/secret-scan.yml CODE_OF_CONDUCT.md CONTRIBUTING.md LICENSE SECURITY.md; do
   cmp "$file" "base/$file" || {
     echo "$file must match base/$file" >&2
     exit 1
