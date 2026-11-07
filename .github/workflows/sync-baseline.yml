@@ -1,0 +1,26 @@
+name: Sync baseline
+
+on:
+  push:
+    branches: [main]
+    paths: ['base/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    env:
+      GH_TOKEN: ${{ secrets.BASELINE_SYNC_TOKEN || github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Configure Git
+        run: |
+          gh auth setup-git
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898283+github-actions[bot]@users.noreply.github.com'
+      - run: scripts/sync-baseline.sh
