@@ -5,6 +5,7 @@
     {
       "matchFileNames": [
         ".github/workflows/baseline-check.yml",
+        ".github/workflows/repo-standards.yml",
         ".github/workflows/secret-scan.yml"
       ],
       "enabled": false

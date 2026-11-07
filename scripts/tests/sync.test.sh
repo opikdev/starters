@@ -50,6 +50,7 @@ pass 'opens a PR for a starter behind the baseline'
 fetch_branch
 cmp "$root/base/LICENSE" "$inspect/LICENSE" || fail 'LICENSE not synced'
 cmp "$root/base/.github/workflows/baseline-check.yml" "$inspect/.github/workflows/baseline-check.yml" || fail 'nested file not synced'
+[[ -x $inspect/.github/scripts/check-repo-standards.sh ]] || fail 'standards check is not executable'
 [[ $(cat "$inspect/README.md") == api-hono-starter ]] || fail 'starter-owned file changed'
 pass 'copies baseline files and keeps starter files'
 
