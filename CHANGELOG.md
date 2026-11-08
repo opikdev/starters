@@ -14,7 +14,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 - `type` and `description` fields in the catalog.
 - `agent-harness` v0.1.0 in the catalog.
 - `api-hono-starter` v0.2.0 in the catalog.
-- `mcp-server-ts-starter` v0.1.0 in the catalog.
+- `mcp-server-ts-starter` v0.2.0 in the catalog.
 
 ### Fixed
 
