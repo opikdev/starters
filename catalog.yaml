@@ -6,6 +6,6 @@ starters:
     description: Project map, agent skills, and enforced checks for any repo
   - name: api-hono-starter
     repo: https://github.com/opikdev/api-hono-starter
-    version: v0.1.1
+    version: v0.2.0
     type: starter
     description: TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth
