@@ -14,3 +14,8 @@ starters:
     version: v0.2.0
     type: starter
     description: MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests
+  - name: api-go-starter
+    repo: https://github.com/opikdev/api-go-starter
+    version: v0.1.0
+    type: starter
+    description: Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth
