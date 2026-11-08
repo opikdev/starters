@@ -13,6 +13,9 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Changed
 
+- The catalog pins `agent-harness` v0.2.0, which `pik add agent-harness` installs.
+- `scripts/check-starters.sh` adds each add-on to an empty Git repo with `pik add`, then runs its checks.
+
 - pik, `create-pik`, and the install script moved to [opikdev/pik](https://github.com/opikdev/pik). `install.sh` here forwards to the new script, and the old Go module path is deprecated.
 - The `Starters` workflow checks every starter with the latest pik release.
 - `scripts/check-starters.sh` generates each starter under a new folder name, so the check covers pik's renames.

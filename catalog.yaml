@@ -1,7 +1,7 @@
 starters:
   - name: agent-harness
     repo: https://github.com/opikdev/agent-harness
-    version: v0.1.0
+    version: v0.2.0
     type: addon
     description: Project map, agent skills, and enforced checks for any repo
   - name: api-hono-starter

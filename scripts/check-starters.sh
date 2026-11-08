@@ -15,19 +15,23 @@ for ((i = 0; i < count; i++)); do
   type=$(yq ".starters[$i].type" "$catalog")
   version=$(yq ".starters[$i].version" "$catalog")
   repo=$(yq ".starters[$i].repo" "$catalog")
-  if [[ $type != starter ]]; then
-    echo "$name: skipped, because add-ons aren't generated with pik new"
-    continue
-  fi
   if [[ $version == null ]]; then
     echo "$name: skipped, because it has no release yet"
     continue
   fi
 
   echo "== $name $version"
-  # A different folder name makes pik rename the project, so the check covers every replacement.
-  project="$workdir/renamed-$name"
-  "$pik" new "$name" "$project" --catalog "$catalog" --set owner=check --yes
+  if [[ $type == addon ]]; then
+    # An add-on goes into an existing repo, so add it to an empty one.
+    project="$workdir/with-$name"
+    mkdir "$project"
+    git -C "$project" init --quiet
+    "$pik" add "$name" "$project" --catalog "$catalog" --yes
+  else
+    # A different folder name makes pik rename the project, so the check covers every replacement.
+    project="$workdir/renamed-$name"
+    "$pik" new "$name" "$project" --catalog "$catalog" --set owner=check --yes
+  fi
 
   manifest=$(curl -fsSL "https://raw.githubusercontent.com/${repo#https://github.com/}/$version/pik.yaml")
   checks=$(yq '.check | length' <<<"$manifest")
