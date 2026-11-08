@@ -11,7 +11,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 - Scripts to clone starters and sync the baseline.
 - Repo standards for required files and README sections, enforced in CI.
 - `agent-harness` v0.1.0 in the catalog.
-- `api-hono-starter` v0.1.0 in the catalog.
+- `api-hono-starter` v0.1.1 in the catalog.
 
 ### Fixed
 
