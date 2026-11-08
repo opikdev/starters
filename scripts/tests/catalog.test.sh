@@ -30,9 +30,13 @@ starters:
   - name: agent-harness
     repo: https://github.com/opikdev/agent-harness
     version: v1.2.3
+    type: addon
+    description: A test entry for the catalog
   - name: api-hono-starter
     repo: https://github.com/opikdev/api-hono-starter
     version: null
+    type: starter
+    description: A test entry for the catalog
 YAML
 
 expect_invalid 'a missing list' 'must be a list' <<'YAML'
@@ -44,6 +48,8 @@ starters:
   - name: api-hono
     repo: https://github.com/opikdev/api-hono
     version: null
+    type: addon
+    description: A test entry for the catalog
 YAML
 
 expect_invalid 'a name with a path' 'must be agent-harness' <<'YAML'
@@ -51,6 +57,8 @@ starters:
   - name: ../evil-starter
     repo: https://github.com/opikdev/evil-starter
     version: null
+    type: starter
+    description: A test entry for the catalog
 YAML
 
 expect_invalid 'a repo that mismatches the name' 'must be https://github.com' <<'YAML'
@@ -58,12 +66,16 @@ starters:
   - name: api-hono-starter
     repo: https://github.com/opikdev/other-starter
     version: null
+    type: starter
+    description: A test entry for the catalog
 YAML
 
 expect_invalid 'a missing repo' 'must be https://github.com' <<'YAML'
 starters:
   - name: api-hono-starter
     version: null
+    type: starter
+    description: A test entry for the catalog
 YAML
 
 expect_invalid 'an unpinned version' 'must be vX.Y.Z or null' <<'YAML'
@@ -71,6 +83,25 @@ starters:
   - name: api-hono-starter
     repo: https://github.com/opikdev/api-hono-starter
     version: main
+    type: starter
+    description: A test entry for the catalog
+YAML
+
+expect_invalid 'a wrong type' 'type "addon" must be starter' <<'YAML'
+starters:
+  - name: api-hono-starter
+    repo: https://github.com/opikdev/api-hono-starter
+    version: null
+    type: addon
+    description: A test entry for the catalog
+YAML
+
+expect_invalid 'a missing description' 'description must be 10–120 characters' <<'YAML'
+starters:
+  - name: agent-harness
+    repo: https://github.com/opikdev/agent-harness
+    version: null
+    type: addon
 YAML
 
 expect_invalid 'a duplicate name' 'duplicate name "agent-harness"' <<'YAML'
@@ -78,9 +109,13 @@ starters:
   - name: agent-harness
     repo: https://github.com/opikdev/agent-harness
     version: null
+    type: addon
+    description: A test entry for the catalog
   - name: agent-harness
     repo: https://github.com/opikdev/agent-harness
     version: v1.0.0
+    type: addon
+    description: A test entry for the catalog
 YAML
 
 expect_invalid 'malformed YAML' 'Error' <<'YAML'

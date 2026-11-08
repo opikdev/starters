@@ -53,6 +53,8 @@ write_catalog() {
       echo "  - name: $name"
       echo "    repo: https://github.com/opikdev/$name"
       echo '    version: null'
+      if [[ $name == *-starter ]]; then echo '    type: starter'; else echo '    type: addon'; fi
+      echo '    description: A test entry for the catalog'
     } >>"$workspace/catalog.yaml"
   done
 }

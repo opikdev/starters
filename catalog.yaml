@@ -2,6 +2,10 @@ starters:
   - name: agent-harness
     repo: https://github.com/opikdev/agent-harness
     version: v0.1.0
+    type: addon
+    description: Project map, agent skills, and enforced checks for any repo
   - name: api-hono-starter
     repo: https://github.com/opikdev/api-hono-starter
     version: v0.1.1
+    type: starter
+    description: TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth
