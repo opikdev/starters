@@ -15,8 +15,12 @@ for ((i = 0; i < count; i++)); do
   type=$(yq ".starters[$i].type" "$catalog")
   version=$(yq ".starters[$i].version" "$catalog")
   repo=$(yq ".starters[$i].repo" "$catalog")
-  if [[ $type != starter || $version == null ]]; then
-    echo "$name: skipped, not a released starter"
+  if [[ $type != starter ]]; then
+    echo "$name: skipped, because add-ons aren't generated with pik new"
+    continue
+  fi
+  if [[ $version == null ]]; then
+    echo "$name: skipped, because it has no release yet"
     continue
   fi
 
