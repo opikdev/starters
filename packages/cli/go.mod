@@ -1,3 +1,4 @@
+// Deprecated: pik moved to github.com/opikdev/pik. Run go install github.com/opikdev/pik/cmd/pik@latest.
 module github.com/opikdev/starters/packages/cli
 
 go 1.27
