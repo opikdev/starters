@@ -42,4 +42,4 @@ GitHub keeps these outside the repo, so set them by hand when you create one:
 
 - Add a description and topics.
 - Turn on **Private vulnerability reporting**, because `SECURITY.md` and `CODE_OF_CONDUCT.md` depend on it.
-- Require pull requests and passing checks on `main`.
+- Require pull requests and passing checks on `main` with `scripts/protect-main.sh <owner/repo> <check>...`. Name only checks that run on every pull request, because a path-filtered check that never runs blocks merging. Admins can still merge a pull request that's failing checks in an emergency, but nobody can push to `main` directly.
