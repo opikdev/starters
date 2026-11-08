@@ -15,7 +15,7 @@ Each is a separate repo with its own CI and releases. Create a project from a st
 | [agent-harness](https://github.com/opikdev/agent-harness) | addon | v0.1.0 | Project map, agent skills, and enforced checks for any repo |
 | [api-hono-starter](https://github.com/opikdev/api-hono-starter) | starter | v0.2.2 | TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth |
 | [mcp-server-ts-starter](https://github.com/opikdev/mcp-server-ts-starter) | starter | v0.2.2 | MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests |
-| [api-go-starter](https://github.com/opikdev/api-go-starter) | starter | v0.1.0 | Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth |
+| [api-go-starter](https://github.com/opikdev/api-go-starter) | starter | v0.1.1 | Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth |
 | [mcp-server-python-starter](https://github.com/opikdev/mcp-server-python-starter) | starter | v0.1.0 | MCP server in Python with stdio, HTTP, OAuth, and tool tests |
 <!-- starters:end -->
 

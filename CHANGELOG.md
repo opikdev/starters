@@ -16,7 +16,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 - pik, `create-pik`, and the install script moved to [opikdev/pik](https://github.com/opikdev/pik). `install.sh` here forwards to the new script, and the old Go module path is deprecated.
 - The `Starters` workflow checks every starter with the latest pik release.
 - `scripts/check-starters.sh` generates each starter under a new folder name, so the check covers pik's renames.
-- The catalog pins `api-hono-starter` and `mcp-server-ts-starter` v0.2.2, which format projects after renaming.
+- The catalog pins `api-hono-starter` and `mcp-server-ts-starter` v0.2.2, which format projects after renaming, and `api-go-starter` v0.1.1, which fixes a double rename in its e2e test.
 
 ## [0.1.1] - 2026-11-08
 
