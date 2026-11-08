@@ -19,6 +19,11 @@ starters:
     version: v0.1.0
     type: starter
     description: Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth
+  - name: mcp-server-python-starter
+    repo: https://github.com/opikdev/mcp-server-python-starter
+    version: v0.1.0
+    type: starter
+    description: MCP server in Python with stdio, HTTP, OAuth, and tool tests
 
 # Repos that get the baseline and the repo standards, but aren't templates. pik ignores this list.
 tools:

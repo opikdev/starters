@@ -25,13 +25,15 @@ for ((i = 0; i < count; i++)); do
   fi
 
   echo "== $name $version"
-  "$pik" new "$name" "$workdir/$name" --catalog "$catalog" --set owner=check --yes
+  # A different folder name makes pik rename the project, so the check covers every replacement.
+  project="$workdir/renamed-$name"
+  "$pik" new "$name" "$project" --catalog "$catalog" --set owner=check --yes
 
   manifest=$(curl -fsSL "https://raw.githubusercontent.com/${repo#https://github.com/}/$version/pik.yaml")
   checks=$(yq '.check | length' <<<"$manifest")
   for ((j = 0; j < checks; j++)); do
     check=$(yq ".check[$j]" <<<"$manifest")
     echo "-- $check"
-    (cd "$workdir/$name" && sh -c "$check")
+    (cd "$project" && sh -c "$check")
   done
 done

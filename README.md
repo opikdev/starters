@@ -16,6 +16,7 @@ Each is a separate repo with its own CI and releases. Create a project from a st
 | [api-hono-starter](https://github.com/opikdev/api-hono-starter) | starter | v0.2.1 | TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth |
 | [mcp-server-ts-starter](https://github.com/opikdev/mcp-server-ts-starter) | starter | v0.2.1 | MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests |
 | [api-go-starter](https://github.com/opikdev/api-go-starter) | starter | v0.1.0 | Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth |
+| [mcp-server-python-starter](https://github.com/opikdev/mcp-server-python-starter) | starter | v0.1.0 | MCP server in Python with stdio, HTTP, OAuth, and tool tests |
 <!-- starters:end -->
 
 Add-ons go into an existing repo, as each one's README describes. `pik list` always shows the latest catalog, and `pik list --json` gives agents and scripts the same list as JSON.
