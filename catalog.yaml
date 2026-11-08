@@ -9,3 +9,8 @@ starters:
     version: v0.2.0
     type: starter
     description: TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth
+  - name: mcp-server-ts-starter
+    repo: https://github.com/opikdev/mcp-server-ts-starter
+    version: v0.1.0
+    type: starter
+    description: MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests
