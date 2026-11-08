@@ -19,3 +19,8 @@ starters:
     version: v0.1.0
     type: starter
     description: Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth
+
+# Repos that get the baseline and the repo standards, but aren't templates. pik ignores this list.
+tools:
+  - name: pik
+    repo: https://github.com/opikdev/pik

@@ -26,7 +26,7 @@ Add-ons go into an existing repo, as each one's README describes. `pik list` alw
 - **Shared baseline:** `base/` holds the license, community files, and workflows that every starter shares.
 - **Enforced standards:** CI fails when a starter edits a baseline file by hand, or drops a required file or README section.
 - **Sync by pull request:** a change to `base/` opens a PR in each starter, so you can review it there.
-- **`pik` CLI:** `pik new` creates a project from a pinned starter release. See [packages/cli](packages/cli/README.md).
+- **`pik` CLI:** `pik new` creates a project from a pinned starter release. It lives in [opikdev/pik](https://github.com/opikdev/pik).
 - **Every starter is proven:** CI generates each released starter with `pik` and runs its checks.
 
 ## Quick start
@@ -38,7 +38,7 @@ brew install opikdev/tap/pik
 pik new api-hono-starter my-api
 ```
 
-Or run it without installing, with `npm create pik@latest`. [packages/cli](packages/cli/README.md) lists every install method.
+Or run it without installing, with `npm create pik@latest`. The [pik README](https://github.com/opikdev/pik#quick-start) lists every install method.
 
 To work on the starters themselves, you need Git, Bash, and [`yq`](https://github.com/mikefarah/yq) v4.
 
@@ -64,7 +64,7 @@ Other common tasks:
 - To change a shared file, follow [Change the baseline](docs/baseline.md).
 - To see what every repo must include, read the [repo standards](docs/repo-standards.md).
 - To understand how the pieces fit, read the [architecture](docs/architecture.md) and [decisions](docs/decisions/).
-- To ship a new version of `pik`, follow [Release pik](docs/releasing.md).
+- To change or release `pik`, work in [opikdev/pik](https://github.com/opikdev/pik).
 
 ## Project structure
 
@@ -73,9 +73,7 @@ Other common tasks:
 | `catalog.yaml` | Every starter, its repo, and its released version |
 | `base/` | Files synced into every starter |
 | `scripts/` | Clone, sync, and check scripts, with their tests |
-| `packages/cli/` | `pik`, written in Go |
-| `packages/create-pik/` | The npm package behind `npm create pik` |
-| `install.sh` | The install script for macOS and Linux |
+| `install.sh` | Forwards the old install URL to the script in opikdev/pik |
 | `docs/` | Architecture, reference pages, and decisions |
 
 ## Contributing

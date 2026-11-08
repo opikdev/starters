@@ -38,5 +38,18 @@ for ((i = 0; i < count; i++)); do
   fi
 done
 
-duplicate=$(yq '.starters[].name' "$catalog" | sort | uniq -d | head -n 1)
+if [[ $(yq '.tools // [] | tag' "$catalog") != '!!seq' ]]; then
+  fail '"tools" must be a list'
+fi
+count=$(yq '.tools // [] | length' "$catalog")
+for ((i = 0; i < count; i++)); do
+  name=$(yq ".tools[$i].name" "$catalog")
+  repo=$(yq ".tools[$i].repo" "$catalog")
+  [[ $name =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || fail "tool name \"$name\" must be lowercase kebab-case"
+  if [[ ! $repo =~ ^https://github\.com/[A-Za-z0-9-]+/$name$ ]]; then
+    fail "$name: repo \"$repo\" must be https://github.com/<owner>/$name"
+  fi
+done
+
+duplicate=$(yq '(.starters[].name), (.tools // [] | .[].name)' "$catalog" | sort | uniq -d | head -n 1)
 [[ -z $duplicate ]] || fail "duplicate name \"$duplicate\""

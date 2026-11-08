@@ -4,6 +4,17 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ## [Unreleased]
 
+### Changed
+
+- pik, `create-pik`, and the install script moved to [opikdev/pik](https://github.com/opikdev/pik). `install.sh` here forwards to the new script, and the old Go module path is deprecated.
+- The `Starters` workflow checks every starter with the latest pik release.
+
+### Added
+
+- A `tools` list in `catalog.yaml`, for repos that get the baseline sync but aren't templates.
+- A starter table in the README, generated from the catalog and checked in CI.
+- `scripts/protect-main.sh`, which requires pull requests and passing checks on `main`.
+
 ## [0.1.1] - 2026-11-08
 
 ### Fixed
