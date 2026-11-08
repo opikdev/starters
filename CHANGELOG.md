@@ -4,9 +4,15 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-08
+
 ### Fixed
 
 - `pik --version` reports the release when installed with `go install`, instead of `dev`.
+
+### Changed
+
+- `create-pik` is published with npm trusted publishing, so releases need no npm token.
 
 ## [0.1.0] - 2026-11-08
 
