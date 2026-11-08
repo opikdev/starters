@@ -18,7 +18,16 @@ Each starter lives in its own Git repo with its own CI and releases. Checkouts s
 
 ## Quick start
 
-You need Git, Bash, and [`yq`](https://github.com/mikefarah/yq) v4.
+To create a project from a starter, install `pik`:
+
+```sh
+brew install opikdev/tap/pik
+pik new api-hono-starter my-api
+```
+
+Or run it without installing, with `npm create pik@latest`. [packages/cli](packages/cli/README.md) lists every install method.
+
+To work on the starters themselves, you need Git, Bash, and [`yq`](https://github.com/mikefarah/yq) v4.
 
 ```sh
 git clone https://github.com/opikdev/starters
@@ -42,6 +51,7 @@ Other common tasks:
 - To change a shared file, follow [Change the baseline](docs/baseline.md).
 - To see what every repo must include, read the [repo standards](docs/repo-standards.md).
 - To understand how the pieces fit, read the [architecture](docs/architecture.md) and [decisions](docs/decisions/).
+- To ship a new version of `pik`, follow [Release pik](docs/releasing.md).
 
 ## Project structure
 
@@ -51,6 +61,8 @@ Other common tasks:
 | `base/` | Files synced into every starter |
 | `scripts/` | Clone, sync, and check scripts, with their tests |
 | `packages/cli/` | `pik`, written in Go |
+| `packages/create-pik/` | The npm package behind `npm create pik` |
+| `install.sh` | The install script for macOS and Linux |
 | `docs/` | Architecture, reference pages, and decisions |
 
 ## Contributing

@@ -11,6 +11,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 - Scripts to clone starters and sync the baseline.
 - Repo standards for required files and README sections, enforced in CI.
 - `pik` v0.1 with `new`, `list`, and `doctor`, plus a CI job that generates and checks every released starter.
+- Releases of `pik` for macOS, Linux, and Windows, through Homebrew, Scoop, an install script, `go install`, and `npm create pik`, with signed checksums.
 - `type` and `description` fields in the catalog.
 - `agent-harness` v0.1.0 in the catalog.
 - `api-hono-starter` v0.2.0 in the catalog.
