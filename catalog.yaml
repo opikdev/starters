@@ -6,12 +6,12 @@ starters:
     description: Project map, agent skills, and enforced checks for any repo
   - name: api-hono-starter
     repo: https://github.com/opikdev/api-hono-starter
-    version: v0.2.0
+    version: v0.2.1
     type: starter
     description: TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth
   - name: mcp-server-ts-starter
     repo: https://github.com/opikdev/mcp-server-ts-starter
-    version: v0.2.0
+    version: v0.2.1
     type: starter
     description: MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests
   - name: api-go-starter
