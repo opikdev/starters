@@ -17,6 +17,7 @@ Each is a separate repo with its own CI and releases. Create a project from a st
 | [mcp-server-ts-starter](https://github.com/opikdev/mcp-server-ts-starter) | starter | v0.2.2 | MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests |
 | [api-go-starter](https://github.com/opikdev/api-go-starter) | starter | v0.1.1 | Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth |
 | [mcp-server-python-starter](https://github.com/opikdev/mcp-server-python-starter) | starter | v0.1.0 | MCP server in Python with stdio, HTTP, OAuth, and tool tests |
+| [api-fastapi-starter](https://github.com/opikdev/api-fastapi-starter) | starter | v0.1.0 | Python API with FastAPI, SQLAlchemy, Postgres, background jobs, and auth |
 <!-- starters:end -->
 
 Add-ons go into an existing repo with `pik add <name>`, such as `pik add agent-harness`. `pik list` always shows the latest catalog, and `pik list --json` gives agents and scripts the same list as JSON.
