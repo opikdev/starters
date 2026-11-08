@@ -24,6 +24,12 @@ starters:
     version: v0.1.0
     type: starter
     description: MCP server in Python with stdio, HTTP, OAuth, and tool tests
+  - name: api-fastapi-starter
+    repo: https://github.com/opikdev/api-fastapi-starter
+    version: v0.1.0
+    type: starter
+    description: Python API with FastAPI, SQLAlchemy, Postgres, background jobs, and auth
+
 # Repos that get the baseline and the repo standards, but aren't templates. pik ignores this list.
 tools:
   - name: pik

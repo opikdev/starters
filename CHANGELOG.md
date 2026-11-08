@@ -6,6 +6,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Added
 
+- `api-fastapi-starter` v0.1.0 in the catalog.
 - `mcp-server-python-starter` v0.1.0 in the catalog.
 - A `tools` list in `catalog.yaml`, for repos that get the baseline sync but aren't templates.
 - A starter table in the README, generated from the catalog and checked in CI.
