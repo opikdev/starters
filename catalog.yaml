@@ -6,20 +6,24 @@ starters:
     description: Project map, agent skills, and enforced checks for any repo
   - name: api-hono-starter
     repo: https://github.com/opikdev/api-hono-starter
-    version: v0.2.1
+    version: v0.2.2
     type: starter
     description: TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth
   - name: mcp-server-ts-starter
     repo: https://github.com/opikdev/mcp-server-ts-starter
-    version: v0.2.1
+    version: v0.2.2
     type: starter
     description: MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests
   - name: api-go-starter
     repo: https://github.com/opikdev/api-go-starter
-    version: v0.1.0
+    version: v0.1.1
     type: starter
     description: Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth
-
+  - name: mcp-server-python-starter
+    repo: https://github.com/opikdev/mcp-server-python-starter
+    version: v0.1.0
+    type: starter
+    description: MCP server in Python with stdio, HTTP, OAuth, and tool tests
 # Repos that get the baseline and the repo standards, but aren't templates. pik ignores this list.
 tools:
   - name: pik
