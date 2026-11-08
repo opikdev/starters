@@ -2,3 +2,6 @@ starters:
   - name: agent-harness
     repo: https://github.com/opikdev/agent-harness
     version: v0.1.0
+  - name: api-hono-starter
+    repo: https://github.com/opikdev/api-hono-starter
+    version: null
