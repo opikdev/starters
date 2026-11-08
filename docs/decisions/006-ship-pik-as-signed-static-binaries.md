@@ -1,6 +1,6 @@
 # 006. Ship pik as signed static binaries
 
-- **Status**: accepted
+- **Status**: accepted, and moved to [opikdev/pik](https://github.com/opikdev/pik/tree/main/docs/decisions) with the CLI
 - **Context**: `pik` must install in one step on macOS, Linux, and Windows, including for people without Go. A downloaded binary is a supply-chain risk unless users can check where it came from.
 - **Decision**: Build static binaries with GoReleaser, sign `checksums.txt` with keyless cosign through GitHub OIDC, and publish to Homebrew, Scoop, an install script, and `create-pik` on npm.
 - **Consequences**:

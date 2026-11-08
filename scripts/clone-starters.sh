@@ -6,11 +6,7 @@ catalog="$root/catalog.yaml"
 
 "$root/scripts/validate-catalog.sh"
 
-count=$(yq '.starters | length' "$catalog")
-for ((i = 0; i < count; i++)); do
-  name=$(yq ".starters[$i].name" "$catalog")
-  repo=$(yq ".starters[$i].repo" "$catalog")
-
+yq -r '(.starters[], (.tools // [])[]) | .name + " " + .repo' "$catalog" | while read -r name repo; do
   if [[ -e $root/$name ]]; then
     echo "$name: already present, skipped"
     continue

@@ -19,8 +19,18 @@ starters:
 | `type` | string | `starter` for `*-starter` repos, which `pik new` creates projects from. `addon` for the rest |
 | `description` | string | One line, 10–120 characters, shown by `pik list` |
 
-A starter must have a [`pik.yaml`](pik-yaml.md) at the pinned tag, because `pik new` and `scripts/check-starters.sh` read it.
+A starter must have a [`pik.yaml`](https://github.com/opikdev/pik/blob/main/docs/pik-yaml.md) at the pinned tag, because `pik new` and `scripts/check-starters.sh` read it.
 
 After changing `catalog.yaml`, run `scripts/render-starters.sh --write` to update the starter table in the README. `scripts/check.sh` fails until you do.
+
+Repos that aren't templates, such as pik, go in a separate `tools` list, with only `name` and `repo`. They get the baseline sync and the clone script, but not `pik list`:
+
+```yaml
+tools:
+  - name: pik
+    repo: https://github.com/opikdev/pik
+```
+
+pik ignores `tools`, and skips entry types it doesn't know. pik v0.1 rejects unknown entry types, which is why tools aren't a new `type`.
 
 Add an entry once the repo exists, because `scripts/clone-starters.sh` and `scripts/sync-baseline.sh` fail on repos they can't reach. `scripts/validate-catalog.sh` enforces this format.

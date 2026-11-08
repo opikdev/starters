@@ -56,7 +56,6 @@ sync_starter() {
   fi
 }
 
-count=$(yq '.starters | length' "$catalog")
-for ((i = 0; i < count; i++)); do
-  sync_starter "$(yq ".starters[$i].name" "$catalog")" "$(yq ".starters[$i].repo" "$catalog")"
+yq -r '(.starters[], (.tools // [])[]) | .name + " " + .repo' "$catalog" | while read -r name repo; do
+  sync_starter "$name" "$repo" </dev/null
 done

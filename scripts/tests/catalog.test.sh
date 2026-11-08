@@ -128,3 +128,29 @@ if output=$("$workspace/scripts/validate-catalog.sh" 2>&1); then
 fi
 [[ $output == *'not found'* ]] || fail "missing file: got \"$output\""
 pass 'rejects a missing file'
+
+expect_valid 'a tool list' <<'YAML'
+starters: []
+tools:
+  - name: pik
+    repo: https://github.com/opikdev/pik
+YAML
+
+expect_invalid 'a tool whose repo name differs' 'must be https://github.com/<owner>/pik' <<'YAML'
+starters: []
+tools:
+  - name: pik
+    repo: https://github.com/opikdev/other
+YAML
+
+expect_invalid 'a tool named like a starter' 'duplicate name "api-x-starter"' <<'YAML'
+starters:
+  - name: api-x-starter
+    repo: https://github.com/opikdev/api-x-starter
+    version: null
+    type: starter
+    description: A starter used in this test
+tools:
+  - name: api-x-starter
+    repo: https://github.com/opikdev/api-x-starter
+YAML
