@@ -21,4 +21,6 @@ starters:
 
 A starter must have a [`pik.yaml`](pik-yaml.md) at the pinned tag, because `pik new` and `scripts/check-starters.sh` read it.
 
+After changing `catalog.yaml`, run `scripts/render-starters.sh --write` to update the starter table in the README. `scripts/check.sh` fails until you do.
+
 Add an entry once the repo exists, because `scripts/clone-starters.sh` and `scripts/sync-baseline.sh` fail on repos they can't reach. `scripts/validate-catalog.sh` enforces this format.

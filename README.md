@@ -5,7 +5,20 @@ Agent-ready starter templates you can clone, run, and customize with coding agen
 [![CI](https://github.com/opikdev/starters/actions/workflows/ci.yml/badge.svg)](https://github.com/opikdev/starters/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Each starter lives in its own Git repo with its own CI and releases. Checkouts sit inside this folder and are ignored by this repo.
+## Starters
+
+Each is a separate repo with its own CI and releases. Create a project from a starter with `pik new <name>`, or clone any repo directly.
+
+<!-- starters:start -->
+| Name | Type | Version | What you get |
+|---|---|---|---|
+| [agent-harness](https://github.com/opikdev/agent-harness) | addon | v0.1.0 | Project map, agent skills, and enforced checks for any repo |
+| [api-hono-starter](https://github.com/opikdev/api-hono-starter) | starter | v0.2.0 | TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth |
+| [mcp-server-ts-starter](https://github.com/opikdev/mcp-server-ts-starter) | starter | v0.2.0 | MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests |
+| [api-go-starter](https://github.com/opikdev/api-go-starter) | starter | v0.1.0 | Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth |
+<!-- starters:end -->
+
+Add-ons go into an existing repo, as each one's README describes. `pik list` always shows the latest catalog, and `pik list --json` gives agents and scripts the same list as JSON.
 
 ## Features
 
@@ -35,7 +48,7 @@ cd starters
 scripts/clone-starters.sh
 ```
 
-The script skips any starter that's already checked out.
+Each starter is checked out inside this folder and ignored by this repo. The script skips any that are already there.
 
 ## Usage
 

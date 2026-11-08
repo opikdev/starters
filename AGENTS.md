@@ -14,6 +14,7 @@ Parent repo for agent-ready starter templates and the `pik` CLI. Starters are se
 ## Rules
 
 - Run `scripts/check.sh` before calling work done. CI runs the same command.
+- After editing `catalog.yaml`, run `scripts/render-starters.sh --write` to update the README's starter table.
 - For changes in `packages/cli/`, also run `gofmt -l .`, `golangci-lint run`, and `go test -race ./...` there.
 - For changes in `packages/create-pik/`, also run `npm test` there.
 - To release `pik`, follow [docs/releasing.md](docs/releasing.md). Never tag without the user's go-ahead, because a tag publishes to npm, Homebrew, and Scoop.

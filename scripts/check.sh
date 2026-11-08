@@ -14,6 +14,7 @@ done
 shellcheck -x install.sh scripts/*.sh scripts/tests/*.sh base/.github/scripts/*.sh
 actionlint .github/workflows/*.yml base/.github/workflows/*.yml
 scripts/validate-catalog.sh
+scripts/render-starters.sh --check
 base/.github/scripts/check-repo-standards.sh
 
 cmp LICENSE packages/cli/LICENSE || {
