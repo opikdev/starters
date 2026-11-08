@@ -11,10 +11,15 @@ for tool in actionlint git shasum shellcheck yq; do
   }
 done
 
-shellcheck -x scripts/*.sh scripts/tests/*.sh base/.github/scripts/*.sh
+shellcheck -x install.sh scripts/*.sh scripts/tests/*.sh base/.github/scripts/*.sh
 actionlint .github/workflows/*.yml base/.github/workflows/*.yml
 scripts/validate-catalog.sh
 base/.github/scripts/check-repo-standards.sh
+
+cmp LICENSE packages/cli/LICENSE || {
+  echo 'packages/cli/LICENSE must match LICENSE' >&2
+  exit 1
+}
 
 for file in .editorconfig .gitattributes .github/CODEOWNERS .github/ISSUE_TEMPLATE/bug_report.yml \
   .github/ISSUE_TEMPLATE/config.yml .github/ISSUE_TEMPLATE/feature_request.yml \
