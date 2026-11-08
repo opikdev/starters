@@ -10,8 +10,10 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 - Shared baseline in `base/`, with a checksum check that stops local edits.
 - Scripts to clone starters and sync the baseline.
 - Repo standards for required files and README sections, enforced in CI.
+- `pik` v0.1 with `new`, `list`, and `doctor`, plus a CI job that generates and checks every released starter.
+- `type` and `description` fields in the catalog.
 - `agent-harness` v0.1.0 in the catalog.
-- `api-hono-starter` v0.1.1 in the catalog.
+- `api-hono-starter` v0.2.0 in the catalog.
 
 ### Fixed
 

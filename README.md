@@ -13,6 +13,8 @@ Each starter lives in its own Git repo with its own CI and releases. Checkouts s
 - **Shared baseline:** `base/` holds the license, community files, and workflows that every starter shares.
 - **Enforced standards:** CI fails when a starter edits a baseline file by hand, or drops a required file or README section.
 - **Sync by pull request:** a change to `base/` opens a PR in each starter, so you can review it there.
+- **`pik` CLI:** `pik new` creates a project from a pinned starter release. See [packages/cli](packages/cli/README.md).
+- **Every starter is proven:** CI generates each released starter with `pik` and runs its checks.
 
 ## Quick start
 
@@ -48,6 +50,7 @@ Other common tasks:
 | `catalog.yaml` | Every starter, its repo, and its released version |
 | `base/` | Files synced into every starter |
 | `scripts/` | Clone, sync, and check scripts, with their tests |
+| `packages/cli/` | `pik`, written in Go |
 | `docs/` | Architecture, reference pages, and decisions |
 
 ## Contributing

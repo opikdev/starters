@@ -7,11 +7,13 @@ Parent repo for agent-ready starter templates and the `pik` CLI. Starters are se
 | `catalog.yaml` | Every starter, its repo, and its released version. See [docs/catalog.md](docs/catalog.md) |
 | `base/` | Files synced into every starter. See [docs/baseline.md](docs/baseline.md) |
 | `scripts/` | Clone, sync, and check scripts, with tests in `scripts/tests/` |
-| `docs/` | [Architecture](docs/architecture.md), [repo standards](docs/repo-standards.md), and [decisions](docs/decisions/) |
+| `packages/cli/` | `pik`, the Go CLI. See [its README](packages/cli/README.md) |
+| `docs/` | [Architecture](docs/architecture.md), [repo standards](docs/repo-standards.md), [pik.yaml](docs/pik-yaml.md), and [decisions](docs/decisions/) |
 
 ## Rules
 
 - Run `scripts/check.sh` before calling work done. CI runs the same command.
+- For changes in `packages/cli/`, also run `gofmt -l .`, `golangci-lint run`, and `go test -race ./...` there.
 - Run Git commands from the repo that owns the change. Inside a starter folder, Git acts on that starter.
 - Open a starter as its own workspace, because search tools that respect `.gitignore` skip it from here.
 - Change baseline files in `base/`, never directly in a starter. CI in the starter fails otherwise.
