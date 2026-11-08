@@ -8,6 +8,8 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 - `mcp-server-python-starter` v0.1.0 in the catalog.
 
+- The catalog pins `api-hono-starter` and `mcp-server-ts-starter` v0.2.2, which format projects after renaming.
+
 ### Changed
 
 - `scripts/check-starters.sh` generates each starter under a new folder name, so the check covers pik's renames.
