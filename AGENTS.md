@@ -7,7 +7,8 @@ Parent repo for agent-ready starter templates: the catalog, the shared baseline,
 | `catalog.yaml` | Every starter, its repo, and its released version, plus tool repos such as pik. See [docs/catalog.md](docs/catalog.md) |
 | `base/` | Files synced into every starter. See [docs/baseline.md](docs/baseline.md) |
 | `scripts/` | Clone, sync, and check scripts, with tests in `scripts/tests/` |
-| `docs/` | [Architecture](docs/architecture.md), [repo standards](docs/repo-standards.md), and [decisions](docs/decisions/) |
+| `renovate/` | Renovate preset that starters extend. See [docs/baseline.md](docs/baseline.md) |
+| `docs/` | [Architecture](docs/architecture.md), [repo standards](docs/repo-standards.md), [adding a starter](docs/add-a-starter.md), and [decisions](docs/decisions/) |
 
 ## Rules
 

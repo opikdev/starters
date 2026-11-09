@@ -20,6 +20,18 @@ Every repo in the catalog, and this parent repo, must meet these standards. `.gi
 
 Baseline files sync from `base/`. To change one, see [Change the baseline](baseline.md).
 
+## Expectations by type
+
+Each catalog type adds its own expectations. The standards check can't tell a repo's type, so reviews and the `Starters` workflow cover these instead.
+
+| Type | Expectations |
+|---|---|
+| `starter` | `pik.yaml` that generates a project passing its own `check` commands. A dev container in `.devcontainer/` that runs the checks. `.env.example` with every setting the app reads. A `security.yml` workflow that audits dependencies and runs CodeQL. The agent harness from `pik add agent-harness`. A release workflow that publishes on a `v*` tag |
+| `addon` | `pik.yaml` with `add.from`, whose files pass the add-on's `check` commands in an empty repo |
+| tool | The agent harness from `pik add agent-harness` |
+
+To add a repo with all of these, follow [Add a starter](add-a-starter.md).
+
 ## README
 
 A README starts with a `#` title and a sentence saying what the repo is. It has 200–1,500 words, and it has each of these `##` sections, with these exact names:
