@@ -21,7 +21,7 @@ starters:
 
 A starter must have a [`pik.yaml`](https://github.com/opikdev/pik/blob/main/docs/pik-yaml.md) at the pinned tag, because `pik new` and `scripts/check-starters.sh` read it.
 
-After changing `catalog.yaml`, run `scripts/render-starters.sh --write` to update the starter table in the README. `scripts/check.sh` fails until you do.
+After changing `catalog.yaml`, run `scripts/render-starters.sh --write` to update the starter table in the README. `scripts/check.sh` fails until you do. Record the change in `CHANGELOG.md` too, because CI fails a pull request that changes the catalog without it.
 
 Repos that aren't templates, such as pik, go in a separate `tools` list, with only `name` and `repo`. They get the baseline sync and the clone script, but not `pik list`:
 

@@ -12,6 +12,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 - A `tools` list in `catalog.yaml`, for repos that get the baseline sync but aren't templates.
 - A starter table in the README, generated from the catalog and checked in CI.
 - `scripts/protect-main.sh`, which requires pull requests and passing checks on `main`.
+- CI fails a pull request that changes `catalog.yaml` without a `CHANGELOG.md` entry.
 
 ### Changed
 

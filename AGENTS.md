@@ -12,7 +12,7 @@ Parent repo for agent-ready starter templates: the catalog, the shared baseline,
 ## Rules
 
 - Run `scripts/check.sh` before calling work done. CI runs the same command.
-- After editing `catalog.yaml`, run `scripts/render-starters.sh --write` to update the README's starter table.
+- After editing `catalog.yaml`, run `scripts/render-starters.sh --write` to update the README's starter table, and record the change in `CHANGELOG.md`. CI fails otherwise.
 - Change `pik` in its own checkout, `pik/`, following its `AGENTS.md`. The `pik.yaml` format is documented there, in `docs/pik-yaml.md`.
 - Never tag a repo without the user's go-ahead, because tags publish images and packages.
 - Run Git commands from the repo that owns the change. Inside a starter folder, Git acts on that starter.
