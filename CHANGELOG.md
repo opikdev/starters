@@ -16,6 +16,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Changed
 
+- `CONTRIBUTING.md` only calls files locked when the repo has a `.baseline.sha256`, so it stays true in generated projects.
 - The `Sync baseline` workflow fails with a clear error when `BASELINE_SYNC_TOKEN` is unset, instead of falling back to a token that can't push.
 - The `Starters` workflow checks each starter in its own job, with tool versions read from the starter, through the reusable `check-starters.yml` workflow that pik's CI can call too. `scripts/check-starters.sh` takes entry names to check only those.
 - `scripts/check-starters.sh` keeps checking the other entries when one fails, and retries the `pik.yaml` download.
