@@ -28,6 +28,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 - `.gitignore` ignores every top-level folder except this repo's own, so a new catalog checkout can't be committed by mistake.
 - The catalog pins `api-hono-starter` v0.2.3, which keeps `X-Request-Id` on error responses.
 - The catalog pins `agent-harness` v0.2.0, which `pik add agent-harness` installs.
+- The catalog pins `agent-harness` v0.3.0, whose check also guards its own workflow and hook, and the starter releases with the review fixes: `api-hono-starter` v0.3.0, `mcp-server-ts-starter` v0.3.0, `api-go-starter` v0.2.0, `api-fastapi-starter` v0.2.0, `mcp-server-python-starter` v0.2.0, and `ai-agent-mastra-starter` v0.2.0. The API starters replace `TRUST_PROXY` with `TRUST_PROXY_HOPS`.
 - `scripts/check-starters.sh` adds each add-on to an empty Git repo with `pik add`, then runs its checks.
 - pik, `create-pik`, and the install script moved to [opikdev/pik](https://github.com/opikdev/pik). `install.sh` here forwards to the new script, and the old Go module path is deprecated.
 - The `Starters` workflow checks every starter with the latest pik release.
