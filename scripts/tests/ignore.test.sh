@@ -10,7 +10,7 @@ for name in $names new-addon; do
   pass "ignores $name/"
 done
 
-for path in catalog.yaml base/LICENSE base/.github/workflows/secret-scan.yml docs/catalog.md scripts/check.sh \
+for path in catalog.yaml base/LICENSE base/.github/workflows/secret-scan.yml docs/catalog.md renovate/baseline.json scripts/check.sh \
   scripts/pik/main.go .github/workflows/ci.yml; do
   if git -C "$workspace" check-ignore --quiet "$path"; then
     fail "$path should be tracked"
