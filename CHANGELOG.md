@@ -16,6 +16,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Changed
 
+- `scripts/sync-baseline.sh` keeps syncing the other repos when one fails, then fails with a list of the failed ones.
 - `scripts/check.sh` checks every file in `base/` against the root copy, except a short list of files the parent doesn't use.
 - The catalog accepts any lowercase kebab-case add-on name, not just `agent-harness`.
 - `.gitignore` ignores every top-level folder except this repo's own, so a new catalog checkout can't be committed by mistake.

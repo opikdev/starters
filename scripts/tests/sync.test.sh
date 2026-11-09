@@ -101,8 +101,12 @@ merge_branch
 [[ $(pr_count) == 2 ]] || fail 'untracked file should not be synced'
 pass 'ignores files not tracked in base'
 
-write_catalog missing-starter
-if "$workspace/scripts/sync-baseline.sh" 2>/dev/null; then
+write_catalog missing-starter api-hono-starter
+if output=$("$workspace/scripts/sync-baseline.sh" 2>"$sandbox/stderr"); then
   fail 'unreachable repo: expected failure'
 fi
-pass 'fails on an unreachable repo'
+[[ $(<"$sandbox/stderr") == *'Sync failed for: missing-starter'* ]] || fail "got \"$(<"$sandbox/stderr")\""
+pass 'fails on an unreachable repo and names it'
+
+[[ $output == *'api-hono-starter: up to date'* ]] || fail "later repos were skipped: \"$output\""
+pass 'still syncs the repos after a failed one'
