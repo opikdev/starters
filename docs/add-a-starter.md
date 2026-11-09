@@ -41,11 +41,14 @@ Follow these steps in order. Steps that create or publish something on GitHub ne
 ## Publish the repo
 
 1. Create the public repo `opikdev/<name>` and push `main`.
-2. Add a description and topics, and turn on private vulnerability reporting:
+2. Add a description and topics, turn on private vulnerability reporting, and mark it as a template repo, so GitHub shows **Use this template**:
 
    ```sh
    gh api -X PUT repos/opikdev/<name>/private-vulnerability-reporting
+   gh api -X PATCH repos/opikdev/<name> -F is_template=true
    ```
+
+   A repo made from the template is an exact copy: it keeps the starter's name and `opikdev` owner, and skips the setup that `pik new` runs.
 
 3. Add the repo to the `BASELINE_SYNC_TOKEN` token's repository list, as in [Set up the sync token](baseline.md#set-up-the-sync-token).
 
