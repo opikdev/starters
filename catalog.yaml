@@ -29,6 +29,11 @@ starters:
     version: v0.1.0
     type: starter
     description: Python API with FastAPI, SQLAlchemy, Postgres, background jobs, and auth
+  - name: ai-agent-mastra-starter
+    repo: https://github.com/opikdev/ai-agent-mastra-starter
+    version: v0.1.0
+    type: starter
+    description: AI agent API with Mastra, Claude, tool approvals, guardrails, and evals
 
 # Repos that get the baseline and the repo standards, but aren't templates. pik ignores this list.
 tools:
