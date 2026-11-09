@@ -18,9 +18,8 @@ Reruns are safe: the script updates an open PR, and it skips starters that are a
 
 ## Set up the sync token
 
-The default workflow token can't reach other repos, so add a token before the catalog lists a starter:
+The default workflow token can't reach other repos, so the `Sync baseline` workflow fails until this token is set:
 
 1. Create a fine-grained token scoped to the starter repos, with read and write access to **Contents**, **Pull requests**, and **Workflows**.
 2. Save it as the `BASELINE_SYNC_TOKEN` repo secret in `opikdev/starters`.
-
-Until then, the workflow passes only while the catalog is empty.
+3. When you add a repo to the catalog, add it to the token's repository list too.
