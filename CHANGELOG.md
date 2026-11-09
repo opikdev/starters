@@ -16,6 +16,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Changed
 
+- The `Starters` workflow checks each starter in its own job, with tool versions read from the starter, through the reusable `check-starters.yml` workflow that pik's CI can call too. `scripts/check-starters.sh` takes entry names to check only those.
 - `scripts/check-starters.sh` keeps checking the other entries when one fails, and retries the `pik.yaml` download.
 - `scripts/sync-baseline.sh` keeps syncing the other repos when one fails, then fails with a list of the failed ones.
 - `scripts/check.sh` checks every file in `base/` against the root copy, except a short list of files the parent doesn't use.

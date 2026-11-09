@@ -1,13 +1,23 @@
 #!/usr/bin/env bash
+# Generates each released catalog entry with pik and runs its checks. Name entries to check only those.
+# Usage: scripts/check-starters.sh <path-to-pik> [<name> ...]
 set -euo pipefail
 
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 catalog="$root/catalog.yaml"
-pik=${1:?Usage: check-starters.sh <path-to-pik>}
+pik=${1:?Usage: check-starters.sh <path-to-pik> [<name> ...]}
+shift
 workdir=$(mktemp -d)
 trap 'rm -rf "$workdir"' EXIT
 
 "$root/scripts/validate-catalog.sh"
+
+for name in "$@"; do
+  if [[ $(NAME=$name yq '.starters[] | select(.name == strenv(NAME)) | .name' "$catalog") != "$name" ]]; then
+    echo "$name is not in the starters list of $catalog" >&2
+    exit 1
+  fi
+done
 
 check_entry() {
   local i=$1 name type version repo project manifest checks check j
@@ -46,6 +56,9 @@ failed=''
 count=$(yq '.starters | length' "$catalog")
 for ((i = 0; i < count; i++)); do
   name=$(yq ".starters[$i].name" "$catalog")
+  if (($# > 0)) && [[ " $* " != *" $name "* ]]; then
+    continue
+  fi
   # One failing entry must not stop the rest, and calling the function from a condition would turn off set -e inside it.
   set +e
   (set -e; check_entry "$i")

@@ -52,7 +52,7 @@ YAML
 check_starters() {
   rm -f "$CHECK_LOG"
   touch "$CHECK_LOG"
-  "$workspace/scripts/check-starters.sh" "$sandbox/bin/pik" >"$sandbox/stdout" 2>"$sandbox/stderr"
+  "$workspace/scripts/check-starters.sh" "$sandbox/bin/pik" "$@" >"$sandbox/stdout" 2>"$sandbox/stderr"
 }
 
 check_starters && fail 'failing entries passed'
@@ -65,3 +65,11 @@ pass 'runs the checks of the entries after a failed one'
 
 [[ $(<"$sandbox/stdout") == *'unreleased-starter: skipped'* ]] || fail "got \"$(<"$sandbox/stdout")\""
 pass 'skips an unreleased entry'
+
+check_starters good-starter some-addon || fail "named entries failed: $(<"$sandbox/stderr")"
+[[ $(<"$CHECK_LOG") == $'with-some-addon\nrenamed-good-starter' ]] || fail "checks ran in: $(<"$CHECK_LOG")"
+pass 'checks only the named entries'
+
+check_starters missing-starter && fail 'an unknown name passed'
+[[ $(<"$sandbox/stderr") == *'missing-starter is not in the starters list'* ]] || fail "got \"$(<"$sandbox/stderr")\""
+pass 'rejects a name that is not in the catalog'
