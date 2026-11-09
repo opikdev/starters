@@ -13,8 +13,14 @@ jobs:
   sync:
     runs-on: ubuntu-24.04
     env:
-      GH_TOKEN: ${{ secrets.BASELINE_SYNC_TOKEN || github.token }}
+      GH_TOKEN: ${{ secrets.BASELINE_SYNC_TOKEN }}
     steps:
+      - name: Require the sync token
+        run: |
+          if [[ -z $GH_TOKEN ]]; then
+            echo '::error::Set the BASELINE_SYNC_TOKEN secret, because the default token cannot push to other repos. See docs/baseline.md'
+            exit 1
+          fi
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false

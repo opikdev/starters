@@ -56,6 +56,20 @@ sync_starter() {
   fi
 }
 
-yq -r '(.starters[], (.tools // [])[]) | .name + " " + .repo' "$catalog" | while read -r name repo; do
-  sync_starter "$name" "$repo" </dev/null
-done
+failed=''
+while read -r name repo; do
+  # One failing repo must not stop the rest, and calling the function from a condition would turn off set -e inside it.
+  set +e
+  (set -e; sync_starter "$name" "$repo") </dev/null
+  status=$?
+  set -e
+  if ((status != 0)); then
+    echo "$name: sync failed" >&2
+    failed+=" $name"
+  fi
+done < <(yq -r '(.starters[], (.tools // [])[]) | .name + " " + .repo' "$catalog")
+
+if [[ -n $failed ]]; then
+  echo "Sync failed for:$failed" >&2
+  exit 1
+fi

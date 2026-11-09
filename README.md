@@ -63,7 +63,7 @@ scripts/check.sh
 
 Other common tasks:
 
-- To add a starter, see the [catalog format](docs/catalog.md).
+- To add a starter, follow [Add a starter](docs/add-a-starter.md). The [catalog format](docs/catalog.md) lists every field.
 - To change a shared file, follow [Change the baseline](docs/baseline.md).
 - To see what every repo must include, read the [repo standards](docs/repo-standards.md).
 - To understand how the pieces fit, read the [architecture](docs/architecture.md) and [decisions](docs/decisions/).
@@ -75,6 +75,7 @@ Other common tasks:
 |---|---|
 | `catalog.yaml` | Every starter, its repo, and its released version |
 | `base/` | Files synced into every starter |
+| `renovate/` | Renovate preset that starters extend |
 | `scripts/` | Clone, sync, and check scripts, with their tests |
 | `install.sh` | Forwards the old install URL to the script in opikdev/pik |
 | `docs/` | Architecture, reference pages, and decisions |

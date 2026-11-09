@@ -4,14 +4,20 @@ source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
 new_workspace
 
-for path in agent-harness/README.md api-hono-starter/package.json mcp-server-ts-starter/src/index.ts pik/go.mod; do
-  git -C "$workspace" check-ignore --quiet "$path" || fail "$path should be ignored"
-  pass "ignores $path"
+names=$(yq '(.starters[].name), (.tools // [] | .[].name)' "$root/catalog.yaml")
+for name in $names new-addon; do
+  git -C "$workspace" check-ignore --quiet "$name/README.md" || fail "$name/ should be ignored"
+  pass "ignores $name/"
 done
 
-for path in catalog.yaml base/LICENSE scripts/check.sh agent-harness-notes/README.md pik-notes/README.md scripts/pik/main.go; do
+for path in catalog.yaml base/LICENSE base/.github/workflows/secret-scan.yml docs/catalog.md renovate/baseline.json scripts/check.sh \
+  scripts/pik/main.go .github/workflows/ci.yml; do
   if git -C "$workspace" check-ignore --quiet "$path"; then
     fail "$path should be tracked"
   fi
   pass "tracks $path"
 done
+
+ignored=$(git -C "$root" ls-files --cached --ignored --exclude-standard)
+[[ -z $ignored ]] || fail "tracked files match .gitignore: $ignored"
+pass 'ignores no tracked file'

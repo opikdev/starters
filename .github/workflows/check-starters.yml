@@ -1,0 +1,117 @@
+name: Check starters
+
+on:
+  workflow_call:
+    inputs:
+      pik-ref:
+        description: Ref of opikdev/pik to build pik from. Empty means the latest release
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+env:
+  STARTERS_REF: ${{ github.repository == 'opikdev/starters' && github.sha || 'main' }}
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      names: ${{ steps.plan.outputs.names }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: opikdev/starters
+          ref: ${{ env.STARTERS_REF }}
+          persist-credentials: false
+      - id: plan
+        run: echo "names=$(yq -o json -I 0 '[.starters[] | select(.version != null) | .name]' catalog.yaml)" >>"$GITHUB_OUTPUT"
+
+  check:
+    needs: plan
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        name: ${{ fromJSON(needs.plan.outputs.names) }}
+    runs-on: ubuntu-24.04
+    env:
+      NAME: ${{ matrix.name }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: opikdev/starters
+          ref: ${{ env.STARTERS_REF }}
+          path: starters
+          persist-credentials: false
+      - id: entry
+        name: Read the catalog entry
+        run: |
+          repo=$(yq '.starters[] | select(.name == strenv(NAME)) | .repo' starters/catalog.yaml)
+          echo "repository=${repo#https://github.com/}" >>"$GITHUB_OUTPUT"
+          echo "version=$(yq '.starters[] | select(.name == strenv(NAME)) | .version' starters/catalog.yaml)" >>"$GITHUB_OUTPUT"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ steps.entry.outputs.repository }}
+          ref: ${{ steps.entry.outputs.version }}
+          path: starter
+          persist-credentials: false
+      - id: versions
+        name: Read tool versions from the starter
+        run: |
+          echo "node=$(yq '.requires[] | select(.name == "node") | .version | split(".") | .[0]' starter/pik.yaml)" >>"$GITHUB_OUTPUT"
+          golangci=$(yq -N '.jobs[].steps[] | select(.uses == "golangci/golangci-lint-action@*") | .with.version' starter/.github/workflows/*.yml | head -n 1)
+          echo "golangci=$golangci" >>"$GITHUB_OUTPUT"
+      - id: pik
+        name: Pick the pik ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PIK_REF: ${{ inputs.pik-ref }}
+        run: echo "ref=${PIK_REF:-$(gh release view --repo opikdev/pik --json tagName --jq .tagName)}" >>"$GITHUB_OUTPUT"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: opikdev/pik
+          ref: ${{ steps.pik.outputs.ref }}
+          path: pik
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: pik/go.mod
+          cache-dependency-path: pik/go.sum
+      - name: Build pik
+        working-directory: pik
+        run: go build -o "$RUNNER_TEMP/pik" ./cmd/pik
+      - if: hashFiles('starter/go.mod') != ''
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: starter/go.mod
+          cache-dependency-path: starter/go.sum
+      - if: steps.versions.outputs.golangci != ''
+        uses: golangci/golangci-lint-action@ba0d7d2ec06a0ea1cb5fa41b2e4a3ab91d21278a # v9.3.0
+        with:
+          version: ${{ steps.versions.outputs.golangci }}
+          install-mode: goinstall
+          install-only: true
+      - if: hashFiles('starter/package.json') != ''
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+        with:
+          package_json_file: starter/package.json
+      - if: steps.versions.outputs.node != ''
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ steps.versions.outputs.node }}
+      - if: hashFiles('starter/uv.lock') != ''
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+      - name: Generate and check the starter
+        run: starters/scripts/check-starters.sh "$RUNNER_TEMP/pik" "$NAME"
+
+  result:
+    needs: check
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Require every starter to pass
+        env:
+          RESULT: ${{ needs.check.result }}
+        run: test "$RESULT" = success

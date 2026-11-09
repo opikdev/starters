@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
       - name: Install actionlint
         run: |
           curl -fsSL --retry 5 --retry-all-errors --retry-delay 15 -o actionlint.tar.gz https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz
@@ -20,3 +22,8 @@ jobs:
           sudo tar -xzf actionlint.tar.gz -C /usr/local/bin actionlint
           rm actionlint.tar.gz
       - run: scripts/check.sh
+      - name: Require a changelog entry for catalog changes
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: scripts/check-changelog.sh "origin/$BASE_REF"

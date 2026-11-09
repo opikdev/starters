@@ -1,23 +1,33 @@
 #!/usr/bin/env bash
+# Generates each released catalog entry with pik and runs its checks. Name entries to check only those.
+# Usage: scripts/check-starters.sh <path-to-pik> [<name> ...]
 set -euo pipefail
 
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 catalog="$root/catalog.yaml"
-pik=${1:?Usage: check-starters.sh <path-to-pik>}
+pik=${1:?Usage: check-starters.sh <path-to-pik> [<name> ...]}
+shift
 workdir=$(mktemp -d)
 trap 'rm -rf "$workdir"' EXIT
 
 "$root/scripts/validate-catalog.sh"
 
-count=$(yq '.starters | length' "$catalog")
-for ((i = 0; i < count; i++)); do
+for name in "$@"; do
+  if [[ $(NAME=$name yq '.starters[] | select(.name == strenv(NAME)) | .name' "$catalog") != "$name" ]]; then
+    echo "$name is not in the starters list of $catalog" >&2
+    exit 1
+  fi
+done
+
+check_entry() {
+  local i=$1 name type version repo project manifest checks check j
   name=$(yq ".starters[$i].name" "$catalog")
   type=$(yq ".starters[$i].type" "$catalog")
   version=$(yq ".starters[$i].version" "$catalog")
   repo=$(yq ".starters[$i].repo" "$catalog")
   if [[ $version == null ]]; then
     echo "$name: skipped, because it has no release yet"
-    continue
+    return
   fi
 
   echo "== $name $version"
@@ -33,11 +43,34 @@ for ((i = 0; i < count; i++)); do
     "$pik" new "$name" "$project" --catalog "$catalog" --set owner=check --yes
   fi
 
-  manifest=$(curl -fsSL "https://raw.githubusercontent.com/${repo#https://github.com/}/$version/pik.yaml")
+  manifest=$(curl -fsSL --retry 3 --connect-timeout 10 "https://raw.githubusercontent.com/${repo#https://github.com/}/$version/pik.yaml")
   checks=$(yq '.check | length' <<<"$manifest")
   for ((j = 0; j < checks; j++)); do
     check=$(yq ".check[$j]" <<<"$manifest")
     echo "-- $check"
     (cd "$project" && sh -c "$check")
   done
+}
+
+failed=''
+count=$(yq '.starters | length' "$catalog")
+for ((i = 0; i < count; i++)); do
+  name=$(yq ".starters[$i].name" "$catalog")
+  if (($# > 0)) && [[ " $* " != *" $name "* ]]; then
+    continue
+  fi
+  # One failing entry must not stop the rest, and calling the function from a condition would turn off set -e inside it.
+  set +e
+  (set -e; check_entry "$i")
+  status=$?
+  set -e
+  if ((status != 0)); then
+    echo "$name: check failed" >&2
+    failed+=" $name"
+  fi
 done
+
+if [[ -n $failed ]]; then
+  echo "Checks failed for:$failed" >&2
+  exit 1
+fi
