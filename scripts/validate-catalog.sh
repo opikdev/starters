@@ -21,9 +21,7 @@ for ((i = 0; i < count; i++)); do
   type=$(yq ".starters[$i].type" "$catalog")
   description=$(yq ".starters[$i].description" "$catalog")
 
-  if [[ $name != agent-harness && ! $name =~ ^[a-z0-9]+(-[a-z0-9]+)*-starter$ ]]; then
-    fail "name \"$name\" must be agent-harness or <type>-<stack>-starter"
-  fi
+  [[ $name =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || fail "name \"$name\" must be lowercase kebab-case"
   if [[ ! $repo =~ ^https://github\.com/[A-Za-z0-9-]+/$name$ ]]; then
     fail "$name: repo \"$repo\" must be https://github.com/<owner>/$name"
   fi

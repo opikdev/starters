@@ -17,6 +17,7 @@ Parent repo for agent-ready starter templates: the catalog, the shared baseline,
 - Never tag a repo without the user's go-ahead, because tags publish images and packages.
 - Run Git commands from the repo that owns the change. Inside a starter folder, Git acts on that starter.
 - Open a starter as its own workspace, because search tools that respect `.gitignore` skip it from here.
+- `.gitignore` ignores every top-level folder except the ones it lists. Add a new folder of this repo there.
 - Change baseline files in `base/`, never directly in a starter. CI in the starter fails otherwise.
 - Every repo must meet the [repo standards](docs/repo-standards.md). CI fails otherwise.
 - Keep each starter runnable. Don't add template placeholders to its source files.

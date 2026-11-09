@@ -13,7 +13,7 @@ starters:
 
 | Field | Type | Description |
 |---|---|---|
-| `name` | string | Folder and repo name: `agent-harness` or `<type>-<stack>-starter`, lowercase kebab-case. Must be unique |
+| `name` | string | Folder and repo name, in lowercase kebab-case. Starters are named `<type>-<stack>-starter`, and add-ons anything else, such as `agent-harness`. Must be unique |
 | `repo` | string | `https://github.com/<owner>/<name>` |
 | `version` | string or null | Released tag as `vX.Y.Z`, or `null` before the first release |
 | `type` | string | `starter` for `*-starter` repos, which `pik new` creates projects from. `addon` for the rest |

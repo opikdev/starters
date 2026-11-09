@@ -43,16 +43,39 @@ expect_invalid 'a missing list' 'must be a list' <<'YAML'
 other: []
 YAML
 
-expect_invalid 'a name without the suffix' 'must be agent-harness' <<'YAML'
+expect_valid 'a second add-on' <<'YAML'
 starters:
-  - name: api-hono
-    repo: https://github.com/opikdev/api-hono
+  - name: agent-harness
+    repo: https://github.com/opikdev/agent-harness
+    version: null
+    type: addon
+    description: A test entry for the catalog
+  - name: ci-kit
+    repo: https://github.com/opikdev/ci-kit
     version: null
     type: addon
     description: A test entry for the catalog
 YAML
 
-expect_invalid 'a name with a path' 'must be agent-harness' <<'YAML'
+expect_invalid 'a starter type without the suffix' 'type "starter" must be starter for *-starter repos' <<'YAML'
+starters:
+  - name: api-hono
+    repo: https://github.com/opikdev/api-hono
+    version: null
+    type: starter
+    description: A test entry for the catalog
+YAML
+
+expect_invalid 'an uppercase name' 'must be lowercase kebab-case' <<'YAML'
+starters:
+  - name: Ci-Kit
+    repo: https://github.com/opikdev/Ci-Kit
+    version: null
+    type: addon
+    description: A test entry for the catalog
+YAML
+
+expect_invalid 'a name with a path' 'must be lowercase kebab-case' <<'YAML'
 starters:
   - name: ../evil-starter
     repo: https://github.com/opikdev/evil-starter

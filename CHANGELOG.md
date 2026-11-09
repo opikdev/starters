@@ -16,6 +16,8 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Changed
 
+- The catalog accepts any lowercase kebab-case add-on name, not just `agent-harness`.
+- `.gitignore` ignores every top-level folder except this repo's own, so a new catalog checkout can't be committed by mistake.
 - The catalog pins `api-hono-starter` v0.2.3, which keeps `X-Request-Id` on error responses.
 - The catalog pins `agent-harness` v0.2.0, which `pik add agent-harness` installs.
 - `scripts/check-starters.sh` adds each add-on to an empty Git repo with `pik add`, then runs its checks.

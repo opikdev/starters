@@ -1,5 +1,8 @@
 .DS_Store
 
-/agent-harness/
-/*-starter/
-/pik/
+# Catalog repos are checked out here as separate Git repos, so only these top-level folders belong to this repo.
+/*/
+!/.github/
+!/base/
+!/docs/
+!/scripts/
