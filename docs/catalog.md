@@ -1,6 +1,6 @@
 # Catalog format
 
-`catalog.yaml` has one key, `starters`, a list of entries. An entry looks like this:
+`catalog.yaml` has two keys: `starters`, the templates and add-ons that pik offers, and `tools`, described [below](#tools). A `starters` entry looks like this:
 
 ```yaml
 starters:
@@ -23,6 +23,10 @@ A starter must have a [`pik.yaml`](https://github.com/opikdev/pik/blob/main/docs
 
 After changing `catalog.yaml`, run `scripts/render-starters.sh --write` to update the starter table in the README. `scripts/check.sh` fails until you do. Record the change in `CHANGELOG.md` too, because CI fails a pull request that changes the catalog without it.
 
+Add an entry once the repo exists, because `scripts/clone-starters.sh` and `scripts/sync-baseline.sh` fail on repos they can't reach. `scripts/validate-catalog.sh` enforces this format.
+
+## Tools
+
 Repos that aren't templates, such as pik, go in a separate `tools` list, with only `name` and `repo`. They get the baseline sync and the clone script, but not `pik list`:
 
 ```yaml
@@ -32,5 +36,3 @@ tools:
 ```
 
 pik ignores `tools`, and skips entry types it doesn't know. pik v0.1 rejects unknown entry types, which is why tools aren't a new `type`.
-
-Add an entry once the repo exists, because `scripts/clone-starters.sh` and `scripts/sync-baseline.sh` fail on repos they can't reach. `scripts/validate-catalog.sh` enforces this format.
