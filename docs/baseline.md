@@ -4,7 +4,7 @@
 
 ## Update a baseline file
 
-1. Edit the file in `base/`, never in a starter.
+1. Edit the file in `base/`, never in a starter. This repo keeps copies of most baseline files at its root, and `scripts/check.sh` fails until they match. A baseline file this repo shouldn't copy goes in `not_mirrored` in that script.
 2. Merge to `main`. The `Sync baseline` workflow runs `scripts/sync-baseline.sh`.
 3. Review and merge the `chore/sync-baseline` PR in each starter.
 

@@ -16,6 +16,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Changed
 
+- `scripts/check.sh` checks every file in `base/` against the root copy, except a short list of files the parent doesn't use.
 - The catalog accepts any lowercase kebab-case add-on name, not just `agent-harness`.
 - `.gitignore` ignores every top-level folder except this repo's own, so a new catalog checkout can't be committed by mistake.
 - The catalog pins `api-hono-starter` v0.2.3, which keeps `X-Request-Id` on error responses.
