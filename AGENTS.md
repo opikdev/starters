@@ -21,6 +21,7 @@ Parent repo for agent-ready starter templates: the catalog, the shared baseline,
 - `.gitignore` ignores every top-level folder except the ones it lists. Add a new folder of this repo there.
 - Change baseline files in `base/`, never directly in a starter. CI in the starter fails otherwise.
 - Every repo must meet the [repo standards](docs/repo-standards.md). CI fails otherwise.
+- Keep starters independent: one never needs another to build or pass its checks. See [Independent starters](docs/repo-standards.md#independent-starters).
 - Keep each starter runnable. Don't add template placeholders to its source files.
 - Record significant decisions as ADRs in `docs/decisions/`.
 - Back important rules with a lint rule, hook, or CI check.

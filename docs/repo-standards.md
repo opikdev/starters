@@ -20,6 +20,15 @@ Every repo in the catalog, and this parent repo, must meet these standards. `.gi
 
 Baseline files sync from `base/`. To change one, see [Change the baseline](baseline.md).
 
+## Independent starters
+
+Each starter stands alone, so users can pick one without the others. Monorepo starters are the exception: they combine their own apps and packages.
+
+- **Builds and checks alone:** install, build, unit and integration tests pass with no other starter. Tests use fakes kept in the starter itself.
+- **Contracts, not starters:** when a starter calls another service, it reads the service's URL from a setting and documents the contract it relies on in its own docs: the endpoints, fields, auth, and errors. Any service that meets the contract works, including your own.
+- **Example backends are optional:** a Compose file or end-to-end test may run another starter's released image as an example backend. Pin the image, keep it replaceable, and say in the docs that it is only an example.
+- **No shared code:** never import, copy at build time, or link another starter's source. Share through the baseline in `base/` or an add-on instead.
+
 ## Expectations by type
 
 Each catalog type adds its own expectations. The standards check can't tell a repo's type, so reviews and the `Starters` workflow cover these instead.
