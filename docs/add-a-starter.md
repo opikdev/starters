@@ -2,9 +2,25 @@
 
 Follow these steps in order. Steps that create or publish something on GitHub need the owner's go-ahead.
 
+## Starter kinds
+
+The kind tells users what they get and whether it runs a server. The README's first sentence says the same in plain words, such as "A single-page app (SPA): React renders in the browser and calls your API."
+
+| Kind | What it is | Runs a server | Rendering |
+|---|---|---|---|
+| `site` | A website of content pages: marketing, blog, docs | No | Built ahead of time (SSG) |
+| `spa` | A browser app that calls a separate API | No | In the browser (CSR) |
+| `fullstack` | UI and server in one app | Yes | On the server (SSR), then hydrated in the browser |
+| `api` | A backend API with no UI | Yes | None |
+| `saas` | A `fullstack` app with auth, billing, and emails | Yes | SSR |
+| `cms` | A `site` or `fullstack` app with a content editor | Depends | SSG or SSR |
+| `admin` | An internal dashboard, built as an SPA | No | CSR |
+
+Other kinds name the product, such as `mcp-server`, `ai-agent`, `mobile`, `cli`, or `monorepo`. Rendering terms follow [Rendering on the Web](https://web.dev/articles/rendering-on-the-web).
+
 ## Build the repo
 
-1. Pick a name: `<type>-<stack>-starter`, such as `api-hono-starter`. Add-ons and tools use any lowercase kebab-case name.
+1. Pick a name: `<kind>-<stack>-starter`, such as `api-hono-starter`, with a kind from [Starter kinds](#starter-kinds). Add-ons and tools use any lowercase kebab-case name.
 2. Build it in a folder of that name inside this checkout, where `.gitignore` already ignores it. Run `git init` there, because it's its own repo.
 3. Meet the [repo standards](repo-standards.md), including the expectations for its type.
 4. Add the agent harness, then fill in its `AGENTS.md` and `docs/architecture.md`:
