@@ -19,6 +19,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Changed
 
+- Pinned `api-hono-starter` v0.4.0, `api-go-starter` v0.3.0, and `api-fastapi-starter` v0.3.0, which add cookie sessions for same-origin browser apps.
 - `renovate.json` is no longer a baseline file, so each starter can add its own rules. Starters extend the new `renovate/baseline.json` preset to leave baseline workflows to the sync, and drop it from generated projects, which keep getting Renovate updates.
 - `CONTRIBUTING.md` only calls files locked when the repo has a `.baseline.sha256`, so it stays true in generated projects.
 - The `Sync baseline` workflow fails with a clear error when `BASELINE_SYNC_TOKEN` is unset, instead of falling back to a token that can't push.
