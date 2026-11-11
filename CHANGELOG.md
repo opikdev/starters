@@ -6,6 +6,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Added
 
+- [Starter kinds](docs/add-a-starter.md#starter-kinds), which define the name prefixes such as `site`, `spa`, `fullstack`, and `api`.
 - [Add a starter](docs/add-a-starter.md), the full checklist from repo to release, and expectations by type in the repo standards.
 - `ai-agent-mastra-starter` v0.1.0 in the catalog.
 - `api-fastapi-starter` v0.1.0 in the catalog.
