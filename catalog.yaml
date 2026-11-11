@@ -34,6 +34,11 @@ starters:
     version: v0.2.0
     type: starter
     description: AI agent API with Mastra, Claude, tool approvals, guardrails, and evals
+  - name: spa-react-starter
+    repo: https://github.com/opikdev/spa-react-starter
+    version: null
+    type: starter
+    description: React SPA with Vite, TanStack Router and Query, shadcn/ui, and cookie sessions
 
 # Repos that get the baseline and the repo standards, but aren't templates. pik ignores this list.
 tools:
