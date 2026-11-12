@@ -36,7 +36,7 @@ starters:
     description: AI agent API with Mastra, Claude, tool approvals, guardrails, and evals
   - name: spa-react-starter
     repo: https://github.com/opikdev/spa-react-starter
-    version: null
+    version: v0.1.0
     type: starter
     description: React SPA with Vite, TanStack Router and Query, shadcn/ui, and cookie sessions
 
