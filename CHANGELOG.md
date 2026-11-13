@@ -20,6 +20,7 @@ All notable changes to this repo are recorded here. The format follows [Keep a C
 
 ### Changed
 
+- Pinned `mcp-server-ts-starter` v0.4.1 and `mcp-server-python-starter` v0.3.1, which add scope challenges, opt-in token exchange, drain on shutdown, signed images, and a fix for renamed projects, and `api-fastapi-starter` v0.4.1, which fixes `make e2e` in new projects.
 - Pinned the hardened API releases: `api-hono-starter` v0.5.0, `api-go-starter` v0.4.0, and `api-fastapi-starter` v0.4.0.
 - Pinned `api-hono-starter` v0.4.0, `api-go-starter` v0.3.0, and `api-fastapi-starter` v0.3.0, which add cookie sessions for same-origin browser apps.
 - `renovate.json` is no longer a baseline file, so each starter can add its own rules. Starters extend the new `renovate/baseline.json` preset to leave baseline workflows to the sync, and drop it from generated projects, which keep getting Renovate updates.

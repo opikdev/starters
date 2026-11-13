@@ -11,7 +11,7 @@ starters:
     description: TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth
   - name: mcp-server-ts-starter
     repo: https://github.com/opikdev/mcp-server-ts-starter
-    version: v0.3.0
+    version: v0.4.1
     type: starter
     description: MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests
   - name: api-go-starter
@@ -21,12 +21,12 @@ starters:
     description: Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth
   - name: mcp-server-python-starter
     repo: https://github.com/opikdev/mcp-server-python-starter
-    version: v0.2.0
+    version: v0.3.1
     type: starter
     description: MCP server in Python with stdio, HTTP, OAuth, and tool tests
   - name: api-fastapi-starter
     repo: https://github.com/opikdev/api-fastapi-starter
-    version: v0.4.0
+    version: v0.4.1
     type: starter
     description: Python API with FastAPI, SQLAlchemy, Postgres, background jobs, and auth
   - name: ai-agent-mastra-starter
