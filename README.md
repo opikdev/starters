@@ -14,10 +14,10 @@ Each is a separate repo with its own CI and releases. Create a project from a st
 |---|---|---|---|
 | [agent-harness](https://github.com/opikdev/agent-harness) | addon | v0.3.0 | Project map, agent skills, and enforced checks for any repo |
 | [api-hono-starter](https://github.com/opikdev/api-hono-starter) | starter | v0.5.0 | TypeScript API with Hono, Drizzle, Postgres, OpenAPI, and auth |
-| [mcp-server-ts-starter](https://github.com/opikdev/mcp-server-ts-starter) | starter | v0.3.0 | MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests |
+| [mcp-server-ts-starter](https://github.com/opikdev/mcp-server-ts-starter) | starter | v0.4.1 | MCP server in TypeScript with stdio, HTTP, OAuth, and tool tests |
 | [api-go-starter](https://github.com/opikdev/api-go-starter) | starter | v0.4.0 | Go API with net/http, contract-first OpenAPI, sqlc, Postgres, and auth |
-| [mcp-server-python-starter](https://github.com/opikdev/mcp-server-python-starter) | starter | v0.2.0 | MCP server in Python with stdio, HTTP, OAuth, and tool tests |
-| [api-fastapi-starter](https://github.com/opikdev/api-fastapi-starter) | starter | v0.4.0 | Python API with FastAPI, SQLAlchemy, Postgres, background jobs, and auth |
+| [mcp-server-python-starter](https://github.com/opikdev/mcp-server-python-starter) | starter | v0.3.1 | MCP server in Python with stdio, HTTP, OAuth, and tool tests |
+| [api-fastapi-starter](https://github.com/opikdev/api-fastapi-starter) | starter | v0.4.1 | Python API with FastAPI, SQLAlchemy, Postgres, background jobs, and auth |
 | [ai-agent-mastra-starter](https://github.com/opikdev/ai-agent-mastra-starter) | starter | v0.2.0 | AI agent API with Mastra, Claude, tool approvals, guardrails, and evals |
 | [spa-react-starter](https://github.com/opikdev/spa-react-starter) | starter | v0.1.0 | React SPA with Vite, TanStack Router and Query, shadcn/ui, and cookie sessions |
 <!-- starters:end -->
